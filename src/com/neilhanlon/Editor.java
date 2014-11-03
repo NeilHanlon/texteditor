@@ -19,8 +19,6 @@ public class Editor extends JFrame implements ActionListener {
     private JButton closeButton;
     public void addTab(String title, FileInstancePanel panel)
     {
-
-        System.out.print(panel.getClass());
         JPanel panelTab = new JPanel(new GridLayout(1,2));
         panelTab.setOpaque(false);
 
@@ -160,11 +158,23 @@ public class Editor extends JFrame implements ActionListener {
         {
             FileInstance file = new FileInstance();
         }
-        if(clicked == saveItem)
-        {
-            System.out.println(tabbedPane.getTabComponentAt(tabbedPane.getSelectedIndex()).getClass());
-            FileInstancePanel panel = (FileInstancePanel) tabbedPane.getTabComponentAt(tabbedPane.getSelectedIndex());
-            System.out.print(panel.getFileInstance());
+        if(clicked == saveItem) {
+            FileInstance file = null;
+            FileInstancePanel basePanel = null;
+            String fileText = "";
+            try{
+                basePanel = (FileInstancePanel) tabbedPane.getSelectedComponent();
+                file = basePanel.getFileInstance();
+                fileText = file.getTextArea().getText();
+            } catch (Exception exception) {
+
+            }
+            if(file == null)
+            {
+                file.saveAs(fileText);
+            } else {
+                file.save(fileText);
+            }
         }
         if(clicked == openFolderItem)
         {

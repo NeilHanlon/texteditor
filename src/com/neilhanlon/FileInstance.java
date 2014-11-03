@@ -5,6 +5,8 @@ import java.awt.*;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by Neil on 11/2/2014.
@@ -15,6 +17,15 @@ public class FileInstance extends JPanel {
 
     private String fileText;
     private File file;
+    /*
+     * 0 = uninitialized
+     * 1 = opened real file unchanged
+     * 2 = opened real file changed
+     * 3 = ????
+     * 4 = ????
+     * 5 = temporary new file
+     */
+    private int status = 0;
 
     private JTextArea textarea;
     private JScrollPane scrollpane;
@@ -22,8 +33,14 @@ public class FileInstance extends JPanel {
 
     //private static Editor editor = new Editor();
     public FileInstance() {
-        this.file = null;
+        try {
+            String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+            this.file = Files.createTempFile(TextEditor.tempDirectory,date,".txt").toFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.fileText = "";
+        this.status = 5;
 
         textarea = new JTextArea();
         textarea.setText(fileText);
@@ -46,6 +63,7 @@ public class FileInstance extends JPanel {
     public FileInstance(File file) {
         this.fileText = openFile(file);
         this.file = file;
+        this.status = 1;
 
         textarea = new JTextArea();
         textarea.setText(fileText);
@@ -86,7 +104,7 @@ public class FileInstance extends JPanel {
         return fileText;
     }
 
-    public boolean saveFile(File file, String fileText) {
+    public boolean save(String fileText) {
         Writer writer = null;
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
@@ -112,12 +130,14 @@ public class FileInstance extends JPanel {
             }
         }
     }
-
-    public static void main(String[] args) {
-
+    public JTextArea getTextArea()
+    {
+        return textarea;
     }
 
-    public boolean saveAsFile(FileInstance file) {
-        return false;
+    public void saveAs(String fileText) {
+        final JFileChooser chooser = new JFileChooser();
+        chooser.setSelectedFile(this.file);
+        chooser.showSaveDialog(getParent());
     }
 }
