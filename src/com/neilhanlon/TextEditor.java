@@ -17,13 +17,14 @@ public class TextEditor {
 
     public static Editor editor;
     public static Path tempDirectory;
-    public static Lumberjack logger = new Lumberjack();
+    public static Lumberjack logger;
 
     public static void main(String[] args)
     {
+        logger = new Lumberjack();
         logger.write("Starting up...");
         createTempDirectory();
-        logger.write("Launching editor");
+        //logger.write("Launching editor");
         editor = new Editor();
     }
     public static void createTempDirectory()

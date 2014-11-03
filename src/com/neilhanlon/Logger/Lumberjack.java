@@ -15,6 +15,7 @@ public class Lumberjack {
 
     private Path logDirectory = null;
     private File logFile = null;
+    private Writer writer;
 
     /**
      * Let's just assume there is no log file...
@@ -22,14 +23,24 @@ public class Lumberjack {
     public Lumberjack() {
         createLogDirectory();
         createLogFile();
+        openWriter();
     }
     public void write(String message)
     {
         this.write("NOTICE",message);
     }
     public void write(String logLevel, String message) {
-        String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-        Writer writer = null;
+        String date = new SimpleDateFormat("yyyy:MM:dd_HH:mm:ss").format(Calendar.getInstance().getTime());
+        try {
+            writer.write("["+date+"] ["+logLevel+"] "+message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+        }
+    }
+    public void openWriter()
+    {
+        writer = null;
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(logFile.toString()), "utf-8"
@@ -39,22 +50,7 @@ public class Lumberjack {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        try {
-            writer.write("["+date+"] ["+logLevel+"] "+message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-
-            }
-        }
     }
-
     public void createLogDirectory() {
         String tempLoc = System.getProperty("java.io.tmpdir");
         File file = null;
@@ -70,8 +66,9 @@ public class Lumberjack {
 
     private void createLogFile() {
         try {
-            String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-            logFile = Files.createTempFile(logDirectory, date, ".log").toFile();
+            String date = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
+            String directory = logDirectory.toString();
+            logFile = Files.createFile(Paths.get(directory,date+".txt")).toFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
