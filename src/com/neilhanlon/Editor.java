@@ -16,10 +16,52 @@ public class Editor extends JFrame implements ActionListener {
     private JMenuItem exitItem,cutItem,copyItem,pasteItem,selectItem,saveItem,openItem,statusItem, saveAsItem, newItem;
     private String pad;
     private JToolBar toolBar;
-    public void addTab(String title,JPanel panel)
+    private JButton closeButton;
+    public void addTab(String title, FileInstancePanel panel)
     {
-        tabbedPane.add(title,panel);
+
+        System.out.print(panel.getClass());
+        JPanel panelTab = new JPanel(new GridLayout(1,2));
+        panelTab.setOpaque(false);
+
+        closeButton = new JButton("x");
+        JLabel label = new JLabel(title);
+        closeButton.addActionListener(new CloseTabActionHandler(title));
+        closeButton.setMaximumSize(new Dimension(2,2));
+
+        /*GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+
+        panelTab.add(label,gbc);
+
+        gbc.gridx++;
+        gbc.weightx = 0;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        panelTab.add(closeButton,gbc);*/
+
+        panelTab.add(label);
+        panelTab.add(closeButton);
+
+        tabbedPane.addTab(title, (FileInstancePanel) panel);
+
+        tabbedPane.setTabComponentAt(tabCount,panelTab);
+
         tabCount++;
+    }
+    public JTabbedPane getTabbedPane(){
+        return tabbedPane;
+    }
+    public void setTabCount(int newCount){
+        tabCount = newCount;
+    }
+    public void incrementTabCount(){
+        tabCount++;
+    }
+    public void decrementTabCount(){
+        tabCount--;
     }
     public Editor()
     {
@@ -112,6 +154,12 @@ public class Editor extends JFrame implements ActionListener {
         if(clicked == newItem)
         {
             FileInstance file = new FileInstance();
+        }
+        if(clicked == saveItem)
+        {
+            System.out.println(tabbedPane.getTabComponentAt(tabbedPane.getSelectedIndex()).getClass());
+            FileInstancePanel panel = (FileInstancePanel) tabbedPane.getTabComponentAt(tabbedPane.getSelectedIndex());
+            System.out.print(panel.getFileInstance());
         }
     }
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.neilhanlon</OriginalElement>
+  <nodes>
+    <node x="200.0" y="-36.0">com.neilhanlon.FileInstance</node>
+    <node x="-470.0" y="86.0">com.neilhanlon.TextEditor</node>
+    <node x="221.0" y="187.0">com.neilhanlon.FileChooser</node>
+    <node x="-173.0" y="66.0">com.neilhanlon.Editor</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileInstance">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileChooser">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.TextEditor" target="com.neilhanlon.Editor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.FileChooser" target="com.neilhanlon.FileInstance">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="-33.0" y="120.0" />
+  <SelectedNodes>
+    <node>com.neilhanlon.FileChooser</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

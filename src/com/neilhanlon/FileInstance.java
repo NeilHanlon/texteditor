@@ -2,12 +2,9 @@ package com.neilhanlon;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  * Created by Neil on 11/2/2014.
@@ -21,11 +18,10 @@ public class FileInstance extends JPanel {
 
     private JTextArea textarea;
     private JScrollPane scrollpane;
-    private JPanel panel;
+    private FileInstancePanel panel;
 
     //private static Editor editor = new Editor();
-    public FileInstance()
-    {
+    public FileInstance() {
         this.file = null;
         this.fileText = "";
 
@@ -38,7 +34,7 @@ public class FileInstance extends JPanel {
         scrollpane = new JScrollPane(textarea);
         scrollpane.setViewportView(textarea);
 
-        panel = new JPanel();
+        panel = new FileInstancePanel();
         panel.setLayout(new BorderLayout());
         panel.add(scrollpane, BorderLayout.CENTER);
 
@@ -46,8 +42,8 @@ public class FileInstance extends JPanel {
 
         TextEditor.editor.addTab(label, panel);
     }
-    public FileInstance(File file)
-    {
+
+    public FileInstance(File file) {
         this.fileText = openFile(file);
         this.file = file;
 
@@ -60,21 +56,23 @@ public class FileInstance extends JPanel {
         scrollpane = new JScrollPane(textarea);
         scrollpane.setViewportView(textarea);
 
-        panel = new JPanel();
+        panel = new FileInstancePanel();
         panel.setLayout(new BorderLayout());
         panel.add(scrollpane, BorderLayout.CENTER);
+
+        panel.setFileInstance(this);
 
         String label = getFileName(file);
 
         TextEditor.editor.addTab(label, panel);
 
     }
-    private String getFileName(File file)
-    {
+
+    private String getFileName(File file) {
         return file.toPath().getFileName().toString();
     }
-    private String openFile(File file)
-    {
+
+    private String openFile(File file) {
         Charset charset = Charset.forName("UTF-8");
         String fileText = "";
         try (BufferedReader reader = Files.newBufferedReader(file.toPath(), charset)) {
@@ -87,8 +85,39 @@ public class FileInstance extends JPanel {
         }
         return fileText;
     }
-    public static void main(String[] args)
-    {
 
+    public boolean saveFile(File file, String fileText) {
+        Writer writer = null;
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(file.toString()), "utf-8"
+            ));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            writer.write(fileText);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                return true;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+    public boolean saveAsFile(FileInstance file) {
+        return false;
     }
 }
