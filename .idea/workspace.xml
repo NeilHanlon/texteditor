@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a65e8fec-6e0c-4eaa-9b48-b21b8694db37" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/neilhanlon/CloseTabActionHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/neilhanlon/FileInstancePanel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/neilhanlon/FolderChooser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/neilhanlon/FolderInstance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/neilhanlon.uml" afterPath="$PROJECT_DIR$/neilhanlon.uml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/neilhanlon/Editor.java" afterPath="$PROJECT_DIR$/src/com/neilhanlon/Editor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/neilhanlon/FileInstance.java" afterPath="$PROJECT_DIR$/src/com/neilhanlon/FileInstance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TextEditor.iws" />
@@ -33,19 +32,19 @@
       <file leaf-file-name="Editor.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/Editor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2223" max-vertical-offset="2958">
-              <caret line="159" column="53" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2376" max-vertical-offset="3111">
+              <caret line="170" column="56" selection-start-line="170" selection-start-column="56" selection-end-line="170" selection-end-column="56" />
               <folding>
-                <element signature="e#1576#1577#0" expanded="true" />
-                <element signature="e#1609#1610#0" expanded="true" />
-                <element signature="e#1652#1653#0" expanded="true" />
-                <element signature="e#1687#1688#0" expanded="true" />
-                <element signature="e#1724#1725#0" expanded="true" />
-                <element signature="e#1750#1751#0" expanded="true" />
-                <element signature="e#1787#1788#0" expanded="true" />
-                <element signature="e#1813#1814#0" expanded="true" />
-                <element signature="e#5429#5430#0" expanded="true" />
-                <element signature="e#5457#5458#0" expanded="true" />
+                <element signature="e#1591#1592#0" expanded="true" />
+                <element signature="e#1624#1625#0" expanded="true" />
+                <element signature="e#1667#1668#0" expanded="true" />
+                <element signature="e#1702#1703#0" expanded="true" />
+                <element signature="e#1739#1740#0" expanded="true" />
+                <element signature="e#1765#1766#0" expanded="true" />
+                <element signature="e#1802#1803#0" expanded="true" />
+                <element signature="e#1828#1829#0" expanded="true" />
+                <element signature="e#5737#5738#0" expanded="true" />
+                <element signature="e#5765#5766#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,12 +53,25 @@
       <file leaf-file-name="FileInstance.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FileInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="2193">
-              <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2193">
+              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#1701#1702#0" expanded="true" />
                 <element signature="e#1762#1763#0" expanded="true" />
+                <element signature="e#3113#3114#0" expanded="true" />
+                <element signature="e#3141#3142#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FolderInstance.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FolderInstance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,20 +83,26 @@
               <ID>JAVA</ID>
               <OriginalElement>com.neilhanlon</OriginalElement>
               <nodes>
-                <node x="246.0" y="-38.0">com.neilhanlon.FileInstance</node>
-                <node x="-492.0" y="14.0">com.neilhanlon.TextEditor</node>
-                <node x="61.0" y="206.0">com.neilhanlon.FileChooser</node>
-                <node x="580.0" y="-13.0">com.neilhanlon.FileInstancePanel</node>
-                <node x="68.0" y="-149.0">com.neilhanlon.CloseTabActionHandler</node>
-                <node x="-233.0" y="-52.0">com.neilhanlon.Editor</node>
+                <node x="-115.0" y="-19.0">com.neilhanlon.FileInstance</node>
+                <node x="-496.0" y="-94.0">com.neilhanlon.TextEditor</node>
+                <node x="-497.0" y="365.5">com.neilhanlon.FolderChooser</node>
+                <node x="-197.0" y="341.5">com.neilhanlon.FolderInstance</node>
+                <node x="201.0" y="217.0">com.neilhanlon.FileChooser</node>
+                <node x="218.0" y="-115.0">com.neilhanlon.FileInstancePanel</node>
+                <node x="-309.0" y="-254.0">com.neilhanlon.CloseTabActionHandler</node>
+                <node x="-536.0" y="43.0">com.neilhanlon.Editor</node>
               </nodes>
               <notes />
               <edges>
+                <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileInstance">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
                 <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileChooser">
                   <point x="0.0" y="0.0" />
                   <point x="0.0" y="0.0" />
                 </edge>
-                <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileInstance">
+                <edge source="com.neilhanlon.FolderInstance" target="com.neilhanlon.Editor">
                   <point x="0.0" y="0.0" />
                   <point x="0.0" y="0.0" />
                 </edge>
@@ -96,11 +114,11 @@
                   <point x="0.0" y="0.0" />
                   <point x="0.0" y="0.0" />
                 </edge>
-                <edge source="com.neilhanlon.FileInstance" target="com.neilhanlon.FileInstancePanel">
+                <edge source="com.neilhanlon.FileChooser" target="com.neilhanlon.FileInstance">
                   <point x="0.0" y="0.0" />
                   <point x="0.0" y="0.0" />
                 </edge>
-                <edge source="com.neilhanlon.FileChooser" target="com.neilhanlon.FileInstance">
+                <edge source="com.neilhanlon.FileInstance" target="com.neilhanlon.FileInstancePanel">
                   <point x="0.0" y="0.0" />
                   <point x="0.0" y="0.0" />
                 </edge>
@@ -108,10 +126,18 @@
                   <point x="0.0" y="0.0" />
                   <point x="0.0" y="0.0" />
                 </edge>
+                <edge source="com.neilhanlon.FolderChooser" target="com.neilhanlon.FolderInstance">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FolderChooser">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
               </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="128.0" y="184.0" />
+              <settings layout="Hierarchic Group" zoom="1.0" x="128.0" y="84.0" />
               <SelectedNodes>
-                <node>com.neilhanlon.FileInstance</node>
+                <node>com.neilhanlon.FileChooser</node>
               </SelectedNodes>
               <Categories>
                 <Category>Constructors</Category>
@@ -124,18 +150,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileInstancePanel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FileInstancePanel.java">
+      <file leaf-file-name="FolderChooser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FolderChooser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#726#727#0" expanded="true" />
-                <element signature="e#766#767#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
-                <element signature="e#836#837#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,6 +182,8 @@
         <option value="$PROJECT_DIR$/src/com/neilhanlon/FileInstance.java" />
         <option value="$PROJECT_DIR$/src/com/neilhanlon/EditorTabbedPane.java" />
         <option value="$PROJECT_DIR$/src/com/neilhanlon/FileInstancePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/neilhanlon/FolderInstance.java" />
+        <option value="$PROJECT_DIR$/src/com/neilhanlon/FolderChooser.java" />
         <option value="$PROJECT_DIR$/src/com/neilhanlon/Editor.java" />
       </list>
     </option>
@@ -563,12 +585,12 @@
       <created>1414899347866</created>
       <updated>1414899347866</updated>
       <workItem from="1414899352162" duration="5067000" />
-      <workItem from="1414904426646" duration="17181000" />
+      <workItem from="1414904426646" duration="18104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22248000" />
+    <option name="totallyTimeSpent" value="23171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
@@ -632,16 +654,16 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1087" max-vertical-offset="1989">
           <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
           <folding>
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1609#1610#0" expanded="true" />
-            <element signature="e#1652#1653#0" expanded="true" />
-            <element signature="e#1687#1688#0" expanded="true" />
-            <element signature="e#1724#1725#0" expanded="true" />
-            <element signature="e#1750#1751#0" expanded="true" />
-            <element signature="e#1787#1788#0" expanded="true" />
-            <element signature="e#1813#1814#0" expanded="true" />
-            <element signature="e#5429#5430#0" expanded="true" />
-            <element signature="e#5457#5458#0" expanded="true" />
+            <element signature="e#1591#1592#0" expanded="true" />
+            <element signature="e#1624#1625#0" expanded="true" />
+            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#1802#1803#0" expanded="true" />
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#5737#5738#0" expanded="true" />
+            <element signature="e#5765#5766#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,10 +674,6 @@
           <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
-            <element signature="e#857#858#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -702,20 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FileChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5771812" vertical-offset="64" max-vertical-offset="731">
-          <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
-            <element signature="e#857#858#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/CloseTabActionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5419463" vertical-offset="0" max-vertical-offset="612">
@@ -749,28 +753,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/Editor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2223" max-vertical-offset="2958">
-          <caret line="159" column="53" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
-          <folding>
-            <element signature="e#1576#1577#0" expanded="true" />
-            <element signature="e#1609#1610#0" expanded="true" />
-            <element signature="e#1652#1653#0" expanded="true" />
-            <element signature="e#1687#1688#0" expanded="true" />
-            <element signature="e#1724#1725#0" expanded="true" />
-            <element signature="e#1750#1751#0" expanded="true" />
-            <element signature="e#1787#1788#0" expanded="true" />
-            <element signature="e#1813#1814#0" expanded="true" />
-            <element signature="e#5429#5430#0" expanded="true" />
-            <element signature="e#5457#5458#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FileInstancePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+        <state vertical-scroll-proportion="0.35216573" vertical-offset="0" max-vertical-offset="595">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -782,13 +767,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FolderInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FileChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8399247" vertical-offset="47" max-vertical-offset="629">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="35" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FolderChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/FileInstance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1305" max-vertical-offset="2193">
-          <caret line="97" column="32" selection-start-line="97" selection-start-column="32" selection-end-line="97" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2193">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#1701#1702#0" expanded="true" />
             <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#3113#3114#0" expanded="true" />
+            <element signature="e#3141#3142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/neilhanlon/Editor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2376" max-vertical-offset="3111">
+          <caret line="170" column="56" selection-start-line="170" selection-start-column="56" selection-end-line="170" selection-end-column="56" />
+          <folding>
+            <element signature="e#1591#1592#0" expanded="true" />
+            <element signature="e#1624#1625#0" expanded="true" />
+            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#1802#1803#0" expanded="true" />
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#5737#5738#0" expanded="true" />
+            <element signature="e#5765#5766#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -799,20 +832,26 @@
           <ID>JAVA</ID>
           <OriginalElement>com.neilhanlon</OriginalElement>
           <nodes>
-            <node x="246.0" y="-38.0">com.neilhanlon.FileInstance</node>
-            <node x="-492.0" y="14.0">com.neilhanlon.TextEditor</node>
-            <node x="61.0" y="206.0">com.neilhanlon.FileChooser</node>
-            <node x="580.0" y="-13.0">com.neilhanlon.FileInstancePanel</node>
-            <node x="68.0" y="-149.0">com.neilhanlon.CloseTabActionHandler</node>
-            <node x="-233.0" y="-52.0">com.neilhanlon.Editor</node>
+            <node x="-115.0" y="-19.0">com.neilhanlon.FileInstance</node>
+            <node x="-496.0" y="-94.0">com.neilhanlon.TextEditor</node>
+            <node x="-497.0" y="365.5">com.neilhanlon.FolderChooser</node>
+            <node x="-197.0" y="341.5">com.neilhanlon.FolderInstance</node>
+            <node x="201.0" y="217.0">com.neilhanlon.FileChooser</node>
+            <node x="218.0" y="-115.0">com.neilhanlon.FileInstancePanel</node>
+            <node x="-309.0" y="-254.0">com.neilhanlon.CloseTabActionHandler</node>
+            <node x="-536.0" y="43.0">com.neilhanlon.Editor</node>
           </nodes>
           <notes />
           <edges>
+            <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileInstance">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
             <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileChooser">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FileInstance">
+            <edge source="com.neilhanlon.FolderInstance" target="com.neilhanlon.Editor">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -824,11 +863,11 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="com.neilhanlon.FileInstance" target="com.neilhanlon.FileInstancePanel">
+            <edge source="com.neilhanlon.FileChooser" target="com.neilhanlon.FileInstance">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
-            <edge source="com.neilhanlon.FileChooser" target="com.neilhanlon.FileInstance">
+            <edge source="com.neilhanlon.FileInstance" target="com.neilhanlon.FileInstancePanel">
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
@@ -836,10 +875,18 @@
               <point x="0.0" y="0.0" />
               <point x="0.0" y="0.0" />
             </edge>
+            <edge source="com.neilhanlon.FolderChooser" target="com.neilhanlon.FolderInstance">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FolderChooser">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="128.0" y="184.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="128.0" y="84.0" />
           <SelectedNodes>
-            <node>com.neilhanlon.FileInstance</node>
+            <node>com.neilhanlon.FileChooser</node>
           </SelectedNodes>
           <Categories>
             <Category>Constructors</Category>

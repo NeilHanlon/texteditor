@@ -13,7 +13,7 @@ public class Editor extends JFrame implements ActionListener {
     private int count;
     private JMenuBar menu;
     private JMenu fileMenu,editMenu,viewMenu;
-    private JMenuItem exitItem,cutItem,copyItem,pasteItem,selectItem,saveItem,openItem,statusItem, saveAsItem, newItem;
+    private JMenuItem exitItem,cutItem,copyItem,pasteItem,selectItem,saveItem,openItem,statusItem, saveAsItem, newItem,openFolderItem;
     private String pad;
     private JToolBar toolBar;
     private JButton closeButton;
@@ -101,6 +101,7 @@ public class Editor extends JFrame implements ActionListener {
         openItem = new JMenuItem("Open");
         statusItem = new JMenuItem("Status");
         newItem = new JMenuItem("New");
+        openFolderItem = new JMenuItem("Open Folder");
         toolBar = new JToolBar();
 
         setJMenuBar(menu);
@@ -112,6 +113,7 @@ public class Editor extends JFrame implements ActionListener {
         fileMenu.add(saveItem);
         fileMenu.add(saveAsItem);
         fileMenu.add(openItem);
+        fileMenu.add(openFolderItem);
         fileMenu.add(exitItem);
 
         editMenu.add(cutItem);
@@ -128,9 +130,12 @@ public class Editor extends JFrame implements ActionListener {
         pasteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK));
         selectItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
 
+        JPanel sidebar = new JPanel();
+
 
         pane.add(toolBar,BorderLayout.SOUTH);
 
+        pane.add(sidebar,BorderLayout.WEST);
         pane.add(tabbedPane,BorderLayout.CENTER);
 
         saveItem.addActionListener(this);
@@ -160,6 +165,10 @@ public class Editor extends JFrame implements ActionListener {
             System.out.println(tabbedPane.getTabComponentAt(tabbedPane.getSelectedIndex()).getClass());
             FileInstancePanel panel = (FileInstancePanel) tabbedPane.getTabComponentAt(tabbedPane.getSelectedIndex());
             System.out.print(panel.getFileInstance());
+        }
+        if(clicked == openFolderItem)
+        {
+            FolderChooser chooser = new FolderChooser();
         }
     }
 

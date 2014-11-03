@@ -3,10 +3,14 @@
   <ID>JAVA</ID>
   <OriginalElement>com.neilhanlon</OriginalElement>
   <nodes>
-    <node x="200.0" y="-36.0">com.neilhanlon.FileInstance</node>
-    <node x="-470.0" y="86.0">com.neilhanlon.TextEditor</node>
-    <node x="221.0" y="187.0">com.neilhanlon.FileChooser</node>
-    <node x="-173.0" y="66.0">com.neilhanlon.Editor</node>
+    <node x="-115.0" y="-19.0">com.neilhanlon.FileInstance</node>
+    <node x="-496.0" y="-94.0">com.neilhanlon.TextEditor</node>
+    <node x="-497.0" y="365.5">com.neilhanlon.FolderChooser</node>
+    <node x="-197.0" y="341.5">com.neilhanlon.FolderInstance</node>
+    <node x="201.0" y="217.0">com.neilhanlon.FileChooser</node>
+    <node x="218.0" y="-115.0">com.neilhanlon.FileInstancePanel</node>
+    <node x="-309.0" y="-254.0">com.neilhanlon.CloseTabActionHandler</node>
+    <node x="-536.0" y="43.0">com.neilhanlon.Editor</node>
   </nodes>
   <notes />
   <edges>
@@ -18,7 +22,15 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="com.neilhanlon.FolderInstance" target="com.neilhanlon.Editor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
     <edge source="com.neilhanlon.TextEditor" target="com.neilhanlon.Editor">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.Editor" target="com.neilhanlon.CloseTabActionHandler">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -26,14 +38,31 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
+    <edge source="com.neilhanlon.FileInstance" target="com.neilhanlon.FileInstancePanel">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.FileInstancePanel" target="com.neilhanlon.FileInstance">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.FolderChooser" target="com.neilhanlon.FolderInstance">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="com.neilhanlon.Editor" target="com.neilhanlon.FolderChooser">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="-33.0" y="120.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="128.0" y="84.0" />
   <SelectedNodes>
     <node>com.neilhanlon.FileChooser</node>
   </SelectedNodes>
   <Categories>
     <Category>Constructors</Category>
     <Category>Methods</Category>
+    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
