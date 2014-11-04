@@ -18,6 +18,7 @@ public class TextEditor {
     public static Editor editor;
     public static Path tempDirectory;
     public static Lumberjack logger;
+    public static final String lineSeparator = System.lineSeparator();
 
     public static void main(String[] args)
     {
@@ -43,7 +44,7 @@ public class TextEditor {
                 logger.write("NOTICE","Directory already created.");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.write(e);
         }
     }
 }

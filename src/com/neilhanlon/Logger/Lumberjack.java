@@ -1,5 +1,7 @@
 package com.neilhanlon.Logger;
 
+import com.neilhanlon.TextEditor;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
@@ -24,33 +26,38 @@ public class Lumberjack {
     public Lumberjack() {
         this(false);
     }
-    public Lumberjack(Boolean pleaseDebug)
-    {
+
+    public Lumberjack(Boolean pleaseDebug) {
         this.debug = pleaseDebug;
         createLogDirectory();
         createLogFile();
         openWriter();
     }
-    public void write(String message)
-    {
-        this.write("NOTICE",message);
+
+    public void write(String message) {
+        this.write("NOTICE", message);
+    }
+    public void write(Exception e) {
+        this.write("ERROR",e);
+    }
+    public void write(String error, Exception e) {
+        this.write(error,e.getStackTrace().toString());
     }
     public void write(String logLevel, String message) {
         String date = new SimpleDateFormat("yyyy:MM:dd_HH:mm:ss").format(Calendar.getInstance().getTime());
-        String logLine = "["+date+"] ["+logLevel+"] "+message;
+        String logLine = "[" + date + "] [" + logLevel + "] " + message;
         try {
-            this.writer.write(logLine);
-            this.writer.write("\n");
+            this.writer.write(logLine + TextEditor.lineSeparator);
             this.writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(debug)
+            if (debug)
                 System.out.println(logLine);
         }
     }
-    public void openWriter()
-    {
+
+    public void openWriter() {
         try {
             this.writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(logFile.toString()), "utf-8"
@@ -61,6 +68,7 @@ public class Lumberjack {
             e.printStackTrace();
         }
     }
+
     public void createLogDirectory() {
         String tempLoc = System.getProperty("java.io.tmpdir");
         File file = null;
@@ -78,7 +86,7 @@ public class Lumberjack {
         try {
             String date = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
             String directory = logDirectory.toString();
-            this.logFile = Files.createFile(Paths.get(directory,date+".txt")).toFile();
+            this.logFile = Files.createFile(Paths.get(directory, date + ".txt")).toFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,6 +115,7 @@ public class Lumberjack {
         }
         this.logFile = newLogFile;
     }
+
     public void close() throws IOException {
         this.writer.close();
     }

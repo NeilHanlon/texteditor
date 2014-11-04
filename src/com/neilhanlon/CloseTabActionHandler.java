@@ -25,6 +25,7 @@ public class CloseTabActionHandler implements ActionListener {
             tabbedPane.removeTabAt(index);
             TextEditor.editor.decrementTabCount();
         }
+        TextEditor.logger.write("Tab removed. tabcount is now: "+TextEditor.editor.getTabCount());
 
     }
 }

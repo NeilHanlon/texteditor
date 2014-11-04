@@ -24,6 +24,7 @@ public class FileChooser extends JFileChooser implements ActionListener {
             File file = fc.getSelectedFile();
             FileInstance fileInstance = new FileInstance(file);
         }
+        TextEditor.logger.write("Opened file");
 
     }
     public void actionPerformed(ActionEvent e)

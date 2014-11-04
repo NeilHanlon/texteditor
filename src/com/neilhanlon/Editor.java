@@ -1,5 +1,7 @@
 package com.neilhanlon;
 
+import com.neilhanlon.Logger.Lumberjack;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -19,6 +21,7 @@ public class Editor extends JFrame implements ActionListener {
     private JToolBar toolBar;
     private JButton closeButton;
     private Container pane;
+    private Lumberjack logger = TextEditor.logger;
     public void addTab(String title, FileInstancePanel panel)
     {
         JPanel panelTab = new JPanel(new GridLayout(1,2));
@@ -50,6 +53,9 @@ public class Editor extends JFrame implements ActionListener {
         tabbedPane.setTabComponentAt(tabCount,panelTab);
 
         tabCount++;
+
+        logger.write("Added tab: " + title);
+        logger.write("tabcount is "+ tabCount);
     }
     public JTabbedPane getTabbedPane(){
         return tabbedPane;
@@ -63,6 +69,10 @@ public class Editor extends JFrame implements ActionListener {
     public void decrementTabCount(){
         tabCount--;
     }
+    public int getTabCount()
+    {
+        return tabCount;
+    }
     public Editor()
     {
         super("TextEditor");
@@ -74,14 +84,8 @@ public class Editor extends JFrame implements ActionListener {
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            logger.write("ERROR",e);
         }
 
         count = 0;
@@ -158,6 +162,8 @@ public class Editor extends JFrame implements ActionListener {
         addWindowListener(exitListener);
 
         setVisible(true);
+        logger.write("GUI Instantiated.");
+        logger.write("Waiting for input...");
     }
     public void closeClicked()
     {
@@ -167,9 +173,10 @@ public class Editor extends JFrame implements ActionListener {
                 JOptionPane.QUESTION_MESSAGE, null, null, null);
         if (confirm == JOptionPane.YES_OPTION) {
             try {
-                TextEditor.logger.close();
+                logger.write("Closing program.");
+                logger.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.write(e);
             }
         }
     }
@@ -178,10 +185,12 @@ public class Editor extends JFrame implements ActionListener {
         if(clicked == openItem)
         {
             FileChooser openDialog = new FileChooser();
+            logger.write("Open dialog called");
         }
         if(clicked == newItem)
         {
             FileInstance file = new FileInstance();
+            logger.write("new item created");
         }
         if(clicked == saveItem) {
             FileInstance file = null;

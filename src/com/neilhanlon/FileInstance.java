@@ -1,6 +1,9 @@
 package com.neilhanlon;
 
+import com.neilhanlon.Logger.Lumberjack;
+
 import javax.swing.*;
+import javax.xml.soap.Text;
 import java.awt.*;
 import java.io.*;
 import java.nio.charset.Charset;
@@ -27,6 +30,8 @@ public class FileInstance extends JPanel {
      */
     private int status = 0;
 
+    private Lumberjack logger = TextEditor.logger;
+
     private JTextArea textarea;
     private JScrollPane scrollpane;
     private FileInstancePanel panel;
@@ -35,12 +40,14 @@ public class FileInstance extends JPanel {
     public FileInstance() {
         try {
             String date = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-            this.file = Files.createTempFile(TextEditor.tempDirectory,date,".txt").toFile();
+            this.file = Files.createTempFile(TextEditor.tempDirectory, date, ".txt").toFile();
+            logger.write("Opened new temporary file at: " + file.getPath().toString());
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.write(e);
         }
         this.fileText = "";
         this.status = 5;
+        logger.write("status for FileInstance " + file.hashCode() + " is now at " + status);
 
         textarea = new JTextArea();
         textarea.setText(fileText);
@@ -65,6 +72,8 @@ public class FileInstance extends JPanel {
         this.file = file;
         this.status = 1;
 
+        logger.write("status for FileInstance " + file.hashCode() + " is now at " + status);
+
         textarea = new JTextArea();
         textarea.setText(fileText);
 
@@ -83,7 +92,6 @@ public class FileInstance extends JPanel {
         String label = getFileName(file);
 
         TextEditor.editor.addTab(label, panel);
-
     }
 
     private String getFileName(File file) {
@@ -96,10 +104,11 @@ public class FileInstance extends JPanel {
         try (BufferedReader reader = Files.newBufferedReader(file.toPath(), charset)) {
             String line;
             while ((line = reader.readLine()) != null) {
-                fileText += line + "\n";
+                fileText += line + TextEditor.lineSeparator;
             }
+            logger.write("read file " + file.getPath().toString() + " into FileInstance " + file.hashCode());
         } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
+            logger.write(x);
         }
         return fileText;
     }
@@ -110,28 +119,17 @@ public class FileInstance extends JPanel {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(file.toString()), "utf-8"
             ));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
             writer.write(fileText);
+            writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.write(e);
+            return false;
         } finally {
-            try {
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                return true;
-            }
+            return true;
         }
     }
-    public JTextArea getTextArea()
-    {
+
+    public JTextArea getTextArea() {
         return textarea;
     }
 
