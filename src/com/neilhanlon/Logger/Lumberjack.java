@@ -27,7 +27,7 @@ public class Lumberjack {
         this(false);
     }
 
-    public Lumberjack(Boolean pleaseDebug) {
+    public Lumberjack(Boolean pleaseDebug) { 
         this.debug = pleaseDebug;
         createLogDirectory();
         createLogFile();
