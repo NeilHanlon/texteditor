@@ -16,11 +16,17 @@ public class Lumberjack {
     private Path logDirectory = null;
     private File logFile = null;
     private Writer writer;
+    private Boolean debug = false;
 
     /**
      * Let's just assume there is no log file...
      */
     public Lumberjack() {
+        this(false);
+    }
+    public Lumberjack(Boolean pleaseDebug)
+    {
+        this.debug = pleaseDebug;
         createLogDirectory();
         createLogFile();
         openWriter();
@@ -31,18 +37,22 @@ public class Lumberjack {
     }
     public void write(String logLevel, String message) {
         String date = new SimpleDateFormat("yyyy:MM:dd_HH:mm:ss").format(Calendar.getInstance().getTime());
+        String logLine = "["+date+"] ["+logLevel+"] "+message;
         try {
-            writer.write("["+date+"] ["+logLevel+"] "+message);
+            this.writer.write(logLine);
+            this.writer.write("\n");
+            this.writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            if(debug)
+                System.out.println(logLine);
         }
     }
     public void openWriter()
     {
-        writer = null;
         try {
-            writer = new BufferedWriter(new OutputStreamWriter(
+            this.writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(logFile.toString()), "utf-8"
             ));
         } catch (UnsupportedEncodingException e) {
@@ -54,10 +64,10 @@ public class Lumberjack {
     public void createLogDirectory() {
         String tempLoc = System.getProperty("java.io.tmpdir");
         File file = null;
-        logDirectory = Paths.get(tempLoc, "TextEditor", "log");
+        this.logDirectory = Paths.get(tempLoc, "TextEditor", "log");
         try {
             if (!Files.exists(logDirectory)) {
-                Files.createDirectory(logDirectory);
+                Files.createDirectories(logDirectory);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,7 +78,7 @@ public class Lumberjack {
         try {
             String date = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(Calendar.getInstance().getTime());
             String directory = logDirectory.toString();
-            logFile = Files.createFile(Paths.get(directory,date+".txt")).toFile();
+            this.logFile = Files.createFile(Paths.get(directory,date+".txt")).toFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,5 +106,8 @@ public class Lumberjack {
             throw new InvalidPathException(newLogFile.toString(), "File does not exist");
         }
         this.logFile = newLogFile;
+    }
+    public void close() throws IOException {
+        this.writer.close();
     }
 }

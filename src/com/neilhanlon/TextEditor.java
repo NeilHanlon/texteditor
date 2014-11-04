@@ -21,10 +21,10 @@ public class TextEditor {
 
     public static void main(String[] args)
     {
-        logger = new Lumberjack();
+        logger = new Lumberjack(true);
         logger.write("Starting up...");
         createTempDirectory();
-        //logger.write("Launching editor");
+        logger.write("Launching editor");
         editor = new Editor();
     }
     public static void createTempDirectory()
@@ -35,7 +35,7 @@ public class TextEditor {
         try {
             if(!Files.exists(tempDirectory))
             {
-                Files.createDirectory(tempDirectory);
+                Files.createDirectories(tempDirectory);
                 logger.write("NOTICE","Created directory " + tempDirectory.toString());
             }
             else

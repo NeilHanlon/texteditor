@@ -2,6 +2,7 @@ package com.neilhanlon;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import javax.swing.*;
 
 /**
@@ -17,6 +18,7 @@ public class Editor extends JFrame implements ActionListener {
     private String pad;
     private JToolBar toolBar;
     private JButton closeButton;
+    private Container pane;
     public void addTab(String title, FileInstancePanel panel)
     {
         JPanel panelTab = new JPanel(new GridLayout(1,2));
@@ -67,7 +69,7 @@ public class Editor extends JFrame implements ActionListener {
         setSize(1200, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Container pane = getContentPane();
+        pane = getContentPane();
         pane.setLayout(new BorderLayout());
 
         try {
@@ -139,14 +141,37 @@ public class Editor extends JFrame implements ActionListener {
         saveItem.addActionListener(this);
         newItem.addActionListener(this);
         openItem.addActionListener(this);
-        exitItem.addActionListener(this);
+        //exitItem.addActionListener(this);
         cutItem.addActionListener(this);
         copyItem.addActionListener(this);
         pasteItem.addActionListener(this);
         selectItem.addActionListener(this);
         statusItem.addActionListener(this);
 
+        WindowListener exitListener = new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                closeClicked();
+            }
+        };
+
+        addWindowListener(exitListener);
+
         setVisible(true);
+    }
+    public void closeClicked()
+    {
+        int confirm = JOptionPane.showOptionDialog(pane,
+                "Are You Sure to Close this Application?",
+                "Exit Confirmation", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                TextEditor.logger.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
     public void actionPerformed(ActionEvent e) {
         JMenuItem clicked = (JMenuItem) e.getSource();
