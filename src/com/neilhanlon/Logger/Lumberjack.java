@@ -27,7 +27,7 @@ public class Lumberjack {
         this(false);
     }
 
-    public Lumberjack(Boolean pleaseDebug) { 
+    public Lumberjack(Boolean pleaseDebug) {
         this.debug = pleaseDebug;
         createLogDirectory();
         createLogFile();
@@ -44,7 +44,7 @@ public class Lumberjack {
         this.write(error,e.getStackTrace().toString());
     }
     public void write(String logLevel, String message) {
-        String date = new SimpleDateFormat("yyyy:MM:dd_HH:mm:ss").format(Calendar.getInstance().getTime());
+        String date = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").format(Calendar.getInstance().getTime());
         String logLine = "[" + date + "] [" + logLevel + "] " + message;
         try {
             this.writer.write(logLine + TextEditor.lineSeparator);
