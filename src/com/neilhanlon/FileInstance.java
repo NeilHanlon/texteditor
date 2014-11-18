@@ -59,6 +59,7 @@ public class FileInstance extends JPanel {
         scrollpane.setViewportView(textarea);
 
         panel = new FileInstancePanel();
+        panel.setFileInstance(this);
         panel.setLayout(new BorderLayout());
         panel.add(scrollpane, BorderLayout.CENTER);
 
@@ -120,7 +121,27 @@ public class FileInstance extends JPanel {
                     new FileOutputStream(file.toString()), "utf-8"
             ));
             writer.write(fileText);
+            writer.flush();
             writer.close();
+            logger.write("Wrote to file: "+ file.toString());
+        } catch (IOException e) {
+            logger.write(e);
+            return false;
+        } finally {
+            return true;
+        }
+    }
+    public boolean save(File file,String fileText)
+    {
+        Writer writer = null;
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(file.toString()), "utf-8"
+            ));
+            writer.write(fileText);
+            writer.flush();
+            writer.close();
+            logger.write("Wrote to file: "+ file.toString());
         } catch (IOException e) {
             logger.write(e);
             return false;
@@ -136,6 +157,13 @@ public class FileInstance extends JPanel {
     public void saveAs(String fileText) {
         final JFileChooser chooser = new JFileChooser();
         chooser.setSelectedFile(this.file);
-        chooser.showSaveDialog(getParent());
+        int returnV = chooser.showSaveDialog(getParent());
+        if(returnV == JFileChooser.APPROVE_OPTION)
+        {
+            File saveFile = chooser.getSelectedFile().toPath().toFile();
+            save(saveFile,fileText);
+        }
     }
+    public void setStatus(int newStatus) { this.status = newStatus; }
+    public int getStatus() { return this.status; }
 }

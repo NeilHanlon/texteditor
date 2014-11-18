@@ -210,14 +210,25 @@ public class Editor extends JFrame implements ActionListener {
                 basePanel = (FileInstancePanel) tabbedPane.getSelectedComponent();
                 file = basePanel.getFileInstance();
                 fileText = file.getTextArea().getText();
+                if(file == null)
+                {
+                    return;
+                }
             } catch (Exception exception) {
-
+                logger.write("ERROR",exception);
             }
-            if (file == null) {
+            //if is new temp. file.. this should be replaced with a buffer check... maybe
+            if (file.getStatus() == 5) {
                 file.saveAs(fileText);
             } else {
                 file.save(fileText);
             }
+        }
+        if(clicked == saveAsItem)
+        {
+            FileInstancePanel basePanel = (FileInstancePanel) tabbedPane.getSelectedComponent();
+            FileInstance file = basePanel.getFileInstance();
+            file.saveAs(file.getTextArea().getText());
         }
         if (clicked == openFolderItem) {
             FolderChooser chooser = new FolderChooser();
