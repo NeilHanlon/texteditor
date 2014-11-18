@@ -1,6 +1,12 @@
 package com.neilhanlon;
 
 import com.neilhanlon.Logger.Lumberjack;
+import syntaxhighlight.SyntaxHighlighter;
+import syntaxhighlight.SyntaxHighlighterPane;
+import syntaxhighlight.Theme;
+import syntaxhighlighter.SyntaxHighlighterParser;
+import syntaxhighlighter.brush.*;
+import syntaxhighlighter.theme.ThemeRDark;
 
 import javax.swing.*;
 import javax.xml.soap.Text;
@@ -9,6 +15,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 /**
@@ -33,7 +40,7 @@ public class FileInstance extends JPanel {
     private Lumberjack logger = TextEditor.logger;
 
     private JTextArea textarea;
-    private JScrollPane scrollpane;
+    private SyntaxHighlighter scrollpane;
     private FileInstancePanel panel;
 
     //private static Editor editor = new Editor();
@@ -55,7 +62,11 @@ public class FileInstance extends JPanel {
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
 
-        scrollpane = new JScrollPane(textarea);
+        SyntaxHighlighterPane highlighterPane = new SyntaxHighlighterPane();
+        SyntaxHighlighterParser parser = new SyntaxHighlighterParser(new BrushPlain());
+        parser.setHtmlScript(true);
+        parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushJScript(), new BrushPhp()));
+        scrollpane = new SyntaxHighlighter(parser,new ThemeRDark(),highlighterPane);
         scrollpane.setViewportView(textarea);
 
         panel = new FileInstancePanel();
@@ -81,8 +92,13 @@ public class FileInstance extends JPanel {
         textarea.setLineWrap(true);
         textarea.setWrapStyleWord(true);
 
-        scrollpane = new JScrollPane(textarea);
-        scrollpane.setViewportView(textarea);
+        SyntaxHighlighterPane highlighterPane = new SyntaxHighlighterPane();
+        SyntaxHighlighterParser parser = new SyntaxHighlighterParser(new BrushPlain());
+        parser.setHtmlScript(true);
+        parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushJScript(), new BrushPhp()));
+        scrollpane = new SyntaxHighlighter(parser,new ThemeRDark(),highlighterPane);
+        scrollpane.setViewportView(highlighterPane);
+        scrollpane.setContent(fileText);
 
         panel = new FileInstancePanel();
         panel.setLayout(new BorderLayout());
