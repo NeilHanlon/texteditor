@@ -6,6 +6,7 @@ package com.neilhanlon;
 public class FolderChooser {
     FolderInstance folder = null;
     public FolderChooser() {
+
     }
     public static void main(String[] args)
     {

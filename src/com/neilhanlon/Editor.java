@@ -16,7 +16,7 @@ public class Editor extends JFrame implements ActionListener {
     private int count;
     private JMenuBar menu;
     private JMenu fileMenu, editMenu, viewMenu;
-    private JMenuItem exitItem, cutItem, copyItem, pasteItem, selectItem, saveItem, openItem, statusItem, saveAsItem, newItem, openFolderItem;
+    public JMenuItem exitItem, cutItem, copyItem, pasteItem, selectItem, saveItem, openItem, statusItem, saveAsItem, newItem, openFolderItem;
     private String pad;
     private JToolBar toolBar;
     private JButton closeButton;
@@ -95,6 +95,7 @@ public class Editor extends JFrame implements ActionListener {
         pane.add(tabbedPane, BorderLayout.CENTER);
 
         saveItem.addActionListener(this);
+        saveAsItem.addActionListener(this);
         newItem.addActionListener(this);
         openItem.addActionListener(this);
         //exitItem.addActionListener(this);
@@ -107,7 +108,7 @@ public class Editor extends JFrame implements ActionListener {
         WindowListener exitListener = new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                closeClicked();
+                new EditorAction(true);
             }
         };
 
@@ -122,7 +123,52 @@ public class Editor extends JFrame implements ActionListener {
         new Editor();
     }
 
+    public JMenuItem getExitItem() {
+        return exitItem;
+    }
+
+    public JMenuItem getCutItem() {
+        return cutItem;
+    }
+
+    public JMenuItem getCopyItem() {
+        return copyItem;
+    }
+
+    public JMenuItem getPasteItem() {
+        return pasteItem;
+    }
+
+    public JMenuItem getSelectItem() {
+        return selectItem;
+    }
+
+    public JMenuItem getSaveItem() {
+        return saveItem;
+    }
+
+    public JMenuItem getOpenItem() {
+        return openItem;
+    }
+
+    public JMenuItem getStatusItem() {
+        return statusItem;
+    }
+
+    public JMenuItem getSaveAsItem() {
+        return saveAsItem;
+    }
+
+    public JMenuItem getNewItem() {
+        return newItem;
+    }
+
+    public JMenuItem getOpenFolderItem() {
+        return openFolderItem;
+    }
+
     public void addTab(String title, FileInstancePanel panel) {
+
         JPanel panelTab = new JPanel(new GridLayout(1, 2));
         panelTab.setOpaque(false);
 
@@ -146,6 +192,7 @@ public class Editor extends JFrame implements ActionListener {
 
         panelTab.add(label);
         panelTab.add(closeButton);
+
 
         tabbedPane.addTab(title, (FileInstancePanel) panel);
 
@@ -176,62 +223,8 @@ public class Editor extends JFrame implements ActionListener {
     public void setTabCount(int newCount) {
         tabCount = newCount;
     }
-
-    public void closeClicked() {
-        int confirm = JOptionPane.showOptionDialog(pane,
-                "Are You Sure to Close this Application?",
-                "Exit Confirmation", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, null, null, null);
-        if (confirm == JOptionPane.YES_OPTION) {
-            try {
-                logger.write("Closing program.");
-                logger.close();
-            } catch (IOException e) {
-                logger.write(e);
-            }
-        }
-    }
-
     public void actionPerformed(ActionEvent e) {
         JMenuItem clicked = (JMenuItem) e.getSource();
-        if (clicked == openItem) {
-            FileChooser openDialog = new FileChooser();
-            logger.write("Open dialog called");
-        }
-        if (clicked == newItem) {
-            FileInstance file = new FileInstance();
-            logger.write("new item created");
-        }
-        if (clicked == saveItem) {
-            FileInstance file = null;
-            FileInstancePanel basePanel = null;
-            String fileText = "";
-            try {
-                basePanel = (FileInstancePanel) tabbedPane.getSelectedComponent();
-                file = basePanel.getFileInstance();
-                fileText = file.getTextArea().getText();
-                if(file == null)
-                {
-                    return;
-                }
-            } catch (Exception exception) {
-                logger.write("ERROR",exception);
-            }
-            //if is new temp. file.. this should be replaced with a buffer check... maybe
-            if (file.getStatus() == 5) {
-                file.saveAs(fileText);
-            } else {
-                file.save(fileText);
-            }
-        }
-        if(clicked == saveAsItem)
-        {
-            FileInstancePanel basePanel = (FileInstancePanel) tabbedPane.getSelectedComponent();
-            FileInstance file = basePanel.getFileInstance();
-            file.saveAs(file.getTextArea().getText());
-        }
-        if (clicked == openFolderItem) {
-            FolderChooser chooser = new FolderChooser();
-        }
+        new EditorAction(clicked);
     }
 }

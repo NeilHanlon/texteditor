@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.BoxView;
@@ -105,7 +105,7 @@ public class SyntaxHighlighterPane extends JTextPane {
   public SyntaxHighlighterPane() {
     super();
 
-    setEditable(false);
+    setEditable(true);
     //<editor-fold defaultstate="collapsed" desc="editor kit">
     setEditorKit(new StyledEditorKit() {
 
