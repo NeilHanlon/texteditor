@@ -43,9 +43,6 @@ public class Lumberjack {
     public void write(String error, Exception e) {
         this.write(error,e.getStackTrace().toString());
     }
-    public void error(String message){ this.write("ERROR",message);}
-    public void error(Exception e) { this.write("ERROR",e); }
-
     public void write(String logLevel, String message) {
         String date = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").format(Calendar.getInstance().getTime());
         String logLine = "[" + date + "] [" + logLevel + "] " + message;

@@ -13,6 +13,7 @@ import java.nio.file.Files;
  */
 public class FileChooser extends JFileChooser implements ActionListener {
     FileInstance fileInstance = null;
+    
     public FileChooser()
     {
         super("Open File");
