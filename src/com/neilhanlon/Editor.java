@@ -41,7 +41,7 @@ public class Editor extends JFrame implements ActionListener {
                     //FileInstance.openFile(((TestFileNode)selPath.getLastPathComponent()).itemPath.toFile());
                 }
                 else if(e.getClickCount() == 2) {
-                	FileInstance openednewfile = new FileInstance(((TestFileNode)selPath.getLastPathComponent()));
+                	new FileInstance(((TestFileNode)selPath.getLastPathComponent()));
                 }
             }
         }
@@ -203,6 +203,66 @@ public class Editor extends JFrame implements ActionListener {
         tabCount = newCount;
     }
 
+    public JMenuBar getMenu() {
+        return menu;
+    }
+
+    public JMenu getFileMenu() {
+        return fileMenu;
+    }
+
+    public JMenu getEditMenu() {
+        return editMenu;
+    }
+
+    public JMenu getViewMenu() {
+        return viewMenu;
+    }
+
+    public JMenuItem getExitItem() {
+        return exitItem;
+    }
+
+    public JMenuItem getCutItem() {
+        return cutItem;
+    }
+
+    public JMenuItem getCopyItem() {
+        return copyItem;
+    }
+
+    public JMenuItem getPasteItem() {
+        return pasteItem;
+    }
+
+    public JMenuItem getSelectItem() {
+        return selectItem;
+    }
+
+    public JMenuItem getSaveItem() {
+        return saveItem;
+    }
+
+    public JMenuItem getOpenItem() {
+        return openItem;
+    }
+
+    public JMenuItem getStatusItem() {
+        return statusItem;
+    }
+
+    public JMenuItem getSaveAsItem() {
+        return saveAsItem;
+    }
+
+    public JMenuItem getNewItem() {
+        return newItem;
+    }
+
+    public JMenuItem getOpenFolderItem() {
+        return openFolderItem;
+    }
+
     public void closeClicked() {
         int confirm = JOptionPane.showOptionDialog(pane,
                 "Are You Sure to Close this Application?",
@@ -220,34 +280,7 @@ public class Editor extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         JMenuItem clicked = (JMenuItem) e.getSource();
-        if (clicked == openItem) {
-            FileChooser openDialog = new FileChooser();
-            logger.write("Open dialog called");
-        }
-        if (clicked == newItem) {
-            FileInstance file = new FileInstance();
-            logger.write("new item created");
-        }
-        if (clicked == saveItem) {
-            FileInstance file = null;
-            FileInstancePanel basePanel = null;
-            String fileText = "";
-            try {
-                basePanel = (FileInstancePanel) tabbedPane.getSelectedComponent();
-                file = basePanel.getFileInstance();
-                fileText = file.getTextArea().getText();
-            } catch (Exception exception) {
-
-            }
-            if (file == null) {
-                file.saveAs(fileText);
-            } else {
-                file.save(fileText);
-            }
-        }
-        if (clicked == openFolderItem) {
-            FolderChooser chooser = new FolderChooser();
-        }
+        new EditorAction(clicked);
     }
     
     public void addItem(TestFileNode node)
