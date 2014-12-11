@@ -90,13 +90,13 @@ public class Editor extends JFrame implements ActionListener {
         fileMenu.add(saveItem);
         fileMenu.add(saveAsItem);
         fileMenu.add(openItem);
-        fileMenu.add(openFolderItem);
+        //fileMenu.add(openFolderItem);
         fileMenu.add(exitItem);
 
         editMenu.add(cutItem);
         editMenu.add(copyItem);
         editMenu.add(pasteItem);
-        editMenu.add(selectItem);
+        //editMenu.add(selectItem);
 
         viewMenu.add(statusItem);
 
@@ -133,7 +133,7 @@ public class Editor extends JFrame implements ActionListener {
         WindowListener exitListener = new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                closeClicked();
+                closeClicked(false);
             }
         };
 
@@ -263,8 +263,8 @@ public class Editor extends JFrame implements ActionListener {
         return openFolderItem;
     }
 
-    public void closeClicked() {
-        int confirm = JOptionPane.showOptionDialog(pane,
+    public void closeClicked(boolean forceClose) {
+        int confirm = (forceClose) ? JOptionPane.YES_OPTION : JOptionPane.showOptionDialog(pane,
                 "Are You Sure to Close this Application?",
                 "Exit Confirmation", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, null, null);

@@ -15,6 +15,14 @@ import java.nio.file.Paths;
  */
 public class TextEditor {
 
+    public TextEditor(){
+        logger = new Lumberjack(true);
+        logger.write("Starting up...");
+        createTempDirectory();
+        logger.write("Launching editor");
+        editor = new Editor();
+    }
+
     public static Editor editor;
     public static Path tempDirectory;
     public static Lumberjack logger;
@@ -22,11 +30,7 @@ public class TextEditor {
 
     public static void main(String[] args)
     {
-        logger = new Lumberjack(true);
-        logger.write("Starting up...");
-        createTempDirectory();
-        logger.write("Launching editor");
-        editor = new Editor();
+        new TextEditor();
     }
     public static void createTempDirectory()
     {
@@ -46,5 +50,8 @@ public class TextEditor {
         } catch (IOException e) {
             logger.write(e);
         }
+    }
+    public void destroy(){
+        editor.closeClicked(true);
     }
 }
