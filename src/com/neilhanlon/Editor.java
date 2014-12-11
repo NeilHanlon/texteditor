@@ -144,9 +144,6 @@ public class Editor extends JFrame implements ActionListener {
         logger.write("Waiting for input...");
     }
 
-  //  public static void main(String[] args) {
-  //      new Editor();
-  //  }
 
     public void addTab(String title, FileInstancePanel panel) {
         JPanel panelTab = new JPanel(new GridLayout(1, 2));
@@ -156,19 +153,6 @@ public class Editor extends JFrame implements ActionListener {
         JLabel label = new JLabel(title);
         closeButton.addActionListener(new CloseTabActionHandler(title));
         closeButton.setMaximumSize(new Dimension(2, 2));
-
-        /*GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-
-        panelTab.add(label,gbc);
-
-        gbc.gridx++;
-        gbc.weightx = 0;
-        gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        panelTab.add(closeButton,gbc);*/
 
         panelTab.add(label);
         panelTab.add(closeButton);
